@@ -19,7 +19,7 @@ def predict():
 
     input_query = np.array([[age, estimeted_sallery]])
     
-    result = model.predict(sc.transform(input_query))
+    result = model.predict(sc.transform(input_query))[0]
     # result = {'age':age, 'estimeted_sallery':estimeted_sallery}
     return jsonify({'Outcome': str(result)}) 
 
