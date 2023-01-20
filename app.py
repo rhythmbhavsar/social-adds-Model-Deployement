@@ -5,7 +5,7 @@ import numpy as np
 print("Running ML API")
 
 model = pkl.load(open('social_add.pkl', 'rb'))
-# sc = pkl.load(open('sc.pkl', 'rb'))
+sc = pkl.load(open('sc.pkl', 'rb'))
 app = Flask(__name__)
 
 @app.route('/')
@@ -19,7 +19,7 @@ def predict():
 
     input_query = np.array([[age, estimeted_sallery]])
     
-    result = model.predict(input_query)[0]
+    result = model.predict(sc.transform(input_query))
     # result = {'age':age, 'estimeted_sallery':estimeted_sallery}
     return jsonify({'Outcome': str(result)}) 
 
